@@ -1,9 +1,9 @@
 public class TestePilha{
 
     public static void main(String[] args){
-        int quantidade = 10;
-        
-        PilhaArray arr = new PilhaArray(1,0);
+        int quantidade = 100;
+        System.out.println("Quantidade de elementos: " + (quantidade));
+        PilhaArray arr = new PilhaArray(1,10);
         System.out.println("inserindo");
         long inicio = System.currentTimeMillis();
         for (int i = 0; i < quantidade; i++){
