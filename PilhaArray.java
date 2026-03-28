@@ -1,23 +1,23 @@
 public class PilhaArray implements Pilha{
     
     private int capacidade;
-    private int Object[] valor;
-    private int i;
+    private Object[] arr;
+    private int top;
     private int crescimento;
 
     public PilhaArray(int capacidade, int crescimento){
         this.capacidade = capacidade;
-        i = -1;
+        top = -1;
 
         if (crescimento <= 0){
             crescimento = 0;
         }
 
-        valor = new Object[capacidade];
+        arr = new Object[capacidade];
     }
 
     public void push(Object o){
-        if (i >= capacidade-1){
+        if (top >= capacidade-1){
 
             if (crescimento == 0){
                 capacidade *= 2;
@@ -25,23 +25,40 @@ public class PilhaArray implements Pilha{
                 capacidade += crescimento;
             }
 
-            Object novalista[] = new Object[capacidade];
-            for (int i = 0; i < valor.length; i++){
-                novalista[i] = valor[i];
+            Object novo_arr[] = new Object[capacidade];
+            for (int i = 0; i < arr.length; i++){
+                novo_arr[i] = arr[i];
             }
 
-            valor = novalista;
+            arr = novo_arr;
         }
 
-        novalista[++] = o;
-    }  //é melhor observar sobre i 
+        arr[++top] = o;
+    }   
 
     public Object pop() throws PilhaVaziaExcecao{
         if (isEmpty()){
-            Throw new PilhaVaziaExcecao("A Pilha está vazia");
+            throw new PilhaVaziaExcecao("A Pilha está vazia");
         }
 
-        Object retira = valor[i--];
+        Object retira = arr[top--];
         return retira;
     }
+
+    public Object top() throws PilhaVaziaExcecao{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecao("A Pilha está vazia");
+        }
+
+        return arr[top];
+    }
+
+    public boolean isEmpty(){
+        return top == -1;
+    }
+
+    public int size(){
+        return top + 1;
+    }
+
 }
