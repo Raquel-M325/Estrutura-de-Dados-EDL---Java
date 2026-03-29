@@ -22,19 +22,35 @@ public class PilhaArrayRP implements PilhaRP{
     }
 
     public Object pop_P() throws PilhaVaziaExcecaoRP{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecaoRP("A Pilha está vazia");
+        }
 
+        return arr[top_P++]; //preciso ver se a ordem tá certa
     }
     
     public Object pop_R() throws PilhaVaziaExcecaoRP{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecaoRP("A Pilha está vazia");
+        }
 
+        return arr[top_R--]; 
     }
 
     public Object topN() throws PilhaVaziaExcecaoRP{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecaoRP("A pilha está vazia");
+        }
 
+        return arr[top_P];
     }
 
     public Object topR() throws PilhaVaziaExcecaoRP{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecaoRP("A Pilha está vazia");
+        }
 
+        return arr[top_R];
     }
 
     public int size(){
@@ -46,7 +62,7 @@ public class PilhaArrayRP implements PilhaRP{
     }
 
     public void empty(){
-
+        
     }
 
     public void grow(){
