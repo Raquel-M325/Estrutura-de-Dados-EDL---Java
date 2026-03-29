@@ -61,4 +61,12 @@ public class PilhaArray implements Pilha{
         return top + 1;
     }
 
+    public void empty(){ //void porque vai retornar nada
+        if (isEmpty()){
+            System.out.println("Pilha já está vazia"); //não é erro, é mais que já está vazio e não tem mais o que fazer
+        }
+
+        top = -1;
+    }
+
 }
