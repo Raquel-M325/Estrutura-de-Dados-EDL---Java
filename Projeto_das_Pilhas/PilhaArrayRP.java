@@ -7,8 +7,8 @@ public class PilhaArrayRP implements PilhaRP{
     private int top_P;
     
     public PilhaArrayRP(int top_P, int top_R, int capacidade){
-        top_P = capacidade - 1; //último
-        top_R = -1;
+        this.top_P = capacidade; //último
+        this.top_R = -1;
         this.capacidade = capacidade;
         arr = new Object[capacidade];
     }
@@ -78,8 +78,8 @@ public class PilhaArrayRP implements PilhaRP{
             System.out.println("Já está vazio a pilha");
         }
 
-        top_P = -1;
-        top_R = capacidade;  //preciso ver se funciona dessa forma
+        top_P = capacidade;
+        top_R = -1;  //preciso ver se funciona dessa forma
     }
 
     public void grow(){

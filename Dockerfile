@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac *.java
+RUN javac Projeto_das_Pilhas/*.java
 
-CMD ["java", "TestePilha"]
+CMD ["java", "Projeto_das_Pilhas.TestePilhaRP"]
