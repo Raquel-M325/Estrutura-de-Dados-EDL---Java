@@ -38,4 +38,8 @@ public class PilhaVector implements Pilha{
     public int size(){
         return lista.size();
     }
+
+    public void adicionaPilha(Pilha p){
+        
+    }
 }
