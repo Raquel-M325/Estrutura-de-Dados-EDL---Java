@@ -8,8 +8,8 @@ public class FilaArray implements Fila{
     private int fim;
 
     public FilaArray(int capacidade, int crescimento){
-        int inicio = 0;
-        int fim = 0;
+        this.inicio = 0;
+        this.fim = 0;
         this.capacidade = capacidade;
         this.crescimento = crescimento;
         arr = new Object[capacidade];
@@ -20,6 +20,8 @@ public class FilaArray implements Fila{
             grow();
         }
 
+        arr[fim] = o;
+        fim = (fim + 1) % capacidade;
 
     }
 
@@ -27,6 +29,10 @@ public class FilaArray implements Fila{
         if (isEmpty()){
             throw new FilaVaziaExcecao("A Fila está vazia");
         }
+
+        Object pop_retirado = arr[inicio];
+        inicio = (inicio + 1) % capacidade; 
+        return pop_retirado;
     }
 
     public int size(){
@@ -47,15 +53,15 @@ public class FilaArray implements Fila{
         }
 
         Object[] novo_arr = new Object[novo_capacidade];
-        novo_inicio = inicio; //temporário
+        int novo_inicio = inicio; //temporário que usa
 
         for (int i = 0; i < size(); i++){
-            novo_arr[i] = arr[novo_inicio]; //ANALISAR ESSE "INICIO"
+            novo_arr[i] = arr[novo_inicio]; 
             novo_inicio = (novo_inicio + 1) % capacidade;
         }   
 
         fim = size();
-        inicio = 0; //PRECISA ANALISAR MELHOR
+        inicio = 0; 
         capacidade = novo_capacidade;
         arr = novo_arr;
     }
