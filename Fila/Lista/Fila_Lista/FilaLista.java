@@ -4,7 +4,7 @@ public class FilaLista {
 
     public Object getElemento();
     public void setElement(Object o);
-    public void enqueue(Object o);
+    public void enqueue(Object elemento);
     public Object dequeue() throws FilaListaVazia;
     public boolean isEmpty();
     public int size();
