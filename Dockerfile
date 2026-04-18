@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-# Compila todos os arquivos de Pilha
-RUN javac Fila/Lista/Fila_Lista/*.java
+RUN javac Fila/Lista/Pilha_Lista/*.java Fila/Lista/Fila_Lista/*.java Fila/Lista/InversoTeste.java
 
-# Executa o teste
-CMD ["java", "Fila.Lista.Fila_Lista.TesteFilaLista"]
+CMD ["java", "Fila.Lista.InversoTeste"]
