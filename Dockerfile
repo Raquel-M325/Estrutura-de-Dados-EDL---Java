@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac Fila/Lista/Pilha_Lista/*.java Fila/Lista/Fila_Lista/*.java Fila/Lista/InversoTeste.java
+RUN javac Fila/Lista/Vector/*.java
 
-CMD ["java", "Fila.Lista.InversoTeste"]
+CMD ["java", "Fila.Lista.Vector.TesteFilaVector"]
