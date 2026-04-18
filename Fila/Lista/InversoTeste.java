@@ -1,9 +1,7 @@
 package Fila.Lista;
 
 import Fila.Lista.Fila_Lista.*;
-import Fila.Lista.Fila_Lista.Fila_lista;
 import Fila.Lista.Pilha_Lista.*;
-import Fila.Lista.Pilha_Lista.Pilha_lista;
 
 public class InversoTeste {
     public static void main(String[] args){
