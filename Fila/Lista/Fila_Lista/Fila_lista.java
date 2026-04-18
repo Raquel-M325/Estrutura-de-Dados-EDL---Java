@@ -12,29 +12,41 @@ public class Fila_lista implements FilaLista{
         public void setElement(Object o){
             elemento = o;
         }
-
-        //preciso analisar
-        private int size;
-        private No primeiro;
-        private No ultimo;
-        
     }
 
-    public void enqueue(Object elemento){
+    private int size;
+    private No inicio;
+    private No fim;
 
+    public void enqueue(Object elemento){
+        No novo = new No();
+        novo.setElement(elemento);
+        if (isEmpty()){
+            inicio = novo;
+        } else{
+            fim.proximo = novo;
+        }
+        fim = novo;
+        size++;
     }
 
     public Object dequeue() throws FilaListaVazia{
         if (isEmpty()){
             throw new FilaListaVazia("Fila está vazia!");
         }
+
+        Object valor = inicio.getElement();
+        inicio = inicio.proximo;
+        size--;
+        return valor;
+
     }
 
     public boolean isEmpty(){
-
+        return inicio == null;
     }
 
     public int size(){
-        
+        return size;
     }
 }

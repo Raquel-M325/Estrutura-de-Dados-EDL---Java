@@ -30,6 +30,10 @@ public class Pilha_lista implements PilhaLista{
             throw new PilhaListaVazia("A Pilha está vazia!");
         }
 
+        Object ultimo_elemento = top.getElemento(); //pega o valor ultimo e salvar
+        top = top.proximo; //ve o proximo No para andar
+        size--; 
+        return ultimo_elemento;       
 
     }
 

@@ -1,12 +1,8 @@
 package Fila.Lista.Fila_Lista;
 
-public class FilaLista {
-
-    public Object getElemento();
-    public void setElement(Object o);
+public interface FilaLista {
     public void enqueue(Object elemento);
     public Object dequeue() throws FilaListaVazia;
     public boolean isEmpty();
     public int size();
-    
 }

@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac Projeto_das_Pilhas/*.java
+# Compila todos os arquivos de Pilha
+RUN javac Fila/Lista/Fila_Lista/*.java
 
-CMD ["java", "Projeto_das_Pilhas.TestePilhaRP"]
+# Executa o teste
+CMD ["java", "Fila.Lista.Fila_Lista.TesteFilaLista"]

@@ -1,9 +1,6 @@
 package Fila.Lista.Pilha_Lista;
 
-public class PilhaLista {
-    
-    public Object getElement();
-    public void setElement(Object o);
+public interface PilhaLista {
     public void push(Object elemento);
     public Object pop() throws PilhaListaVazia;
     public boolean isEmpty();
