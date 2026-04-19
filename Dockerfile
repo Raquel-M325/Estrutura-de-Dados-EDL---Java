@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac Fila/Deque/*.java
+RUN javac Fila/Deque/DequeVector/*.java
 
-CMD ["java", "Fila.Deque.TesteDeque"]
+CMD ["java", "Fila.Deque.DequeVector.TesteDequeVector"]
