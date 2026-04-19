@@ -50,4 +50,9 @@ insertLast(7), removeFirst(), last(), removeLast().
 
 A resposta final é 8
 
+## Implemente um deque usando arrays. Descreva o tempo de execução de cada um dos algoritmos.
+
+Com algoritmo já implementado na pasta Fila/Deque/DequeArray. Todas as operações como insertFirst, insertLast, removeFirst, removeLast, first, last, size e isEmpty.
+
+Têm tempo de execução O(1), pois o array acessa qualquer posição diretamente pelo índice, sem precisar percorrer os elementos, sendo mais direto e rápido na operação.
 
