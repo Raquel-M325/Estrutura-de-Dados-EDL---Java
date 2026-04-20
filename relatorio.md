@@ -56,3 +56,16 @@ Com algoritmo já implementado na pasta Fila/Deque/DequeArray. Todas as operaç�
 
 Têm tempo de execução O(1), pois o array acessa qualquer posição diretamente pelo índice, sem precisar percorrer os elementos, sendo mais direto e rápido na operação.
 
+## Tabela de Tempos de Execução 
+
+### Fila com Array
+
+| Operação | Tempo | Motivo |
+|---|---|---|
+| `enqueue` | O(1) | insere direto pelo índice `fim` |
+| `dequeue` | O(n) | recalcula o menor percorrendo o array |
+| `isEmpty` | O(1) | compara `inicio` e `fim` direto |
+| `size` | O(1) | cálculo direto com índices |
+| `acessarMenor` | O(1) | retorna atributo direto |
+| `grow` | O(n) | copia todos os elementos para novo array |
+

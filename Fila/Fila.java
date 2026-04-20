@@ -5,4 +5,5 @@ public interface Fila{
     public abstract int size();
     public abstract boolean isEmpty();
     public abstract Object dequeue() throws FilaVaziaExcecao;
+    public abstract Object acessarMenor() throws FilaVaziaExcecao;
 }

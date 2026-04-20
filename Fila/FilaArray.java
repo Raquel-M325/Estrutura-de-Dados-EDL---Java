@@ -6,6 +6,7 @@ public class FilaArray implements Fila{
     private Object[] arr;
     private int inicio;
     private int fim;
+    private int menor;
 
     public FilaArray(int capacidade, int crescimento){
         this.inicio = 0;
@@ -20,6 +21,12 @@ public class FilaArray implements Fila{
             grow();
         }
 
+        int valorElemento = (int)o; //precisava converter temporariamente para usar a comparação
+
+        if (isEmpty() || menor > valorElemento){
+            menor = valorElemento;
+        }
+
         arr[fim] = o;
         fim = (fim + 1) % capacidade;
 
@@ -32,6 +39,16 @@ public class FilaArray implements Fila{
 
         Object pop_retirado = arr[inicio];
         inicio = (inicio + 1) % capacidade; 
+        
+        if (!isEmpty()){
+            menor = (int)arr[inicio]; //precisa reiniciar o menor
+            for (int i = inicio; i != fim; i = (i + 1) % capacidade){
+                if (menor > (int)arr[i]){
+                    menor = (int)arr[i];
+                }
+            } //foi um array circular
+        }
+
         return pop_retirado;
     }
 
@@ -65,4 +82,13 @@ public class FilaArray implements Fila{
         capacidade = novo_capacidade;
         arr = novo_arr;
     }
+
+    public Object acessarMenor() throws FilaVaziaExcecao{
+       if (isEmpty()){
+            throw new FilaVaziaExcecao("Não tem elemento na fila!");
+       }
+       
+        return menor;  
+    }
+    
 }
