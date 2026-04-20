@@ -1,7 +1,7 @@
 package Pilha;
 import java.util.Vector;
 
-public class PilhaVector implements Pilha{
+public class PilhaVector implements PilhaDeque{
     private Vector<Object> lista = new Vector<>();
 
     public void push(Object o){

@@ -1,11 +1,14 @@
 package Pilha;
 
+import Projeto_das_Pilhas.PilhaVaziaExcecaoRP;
+
 public class PilhaArray implements Pilha{
     
     private int capacidade;
     private Object[] arr;
     private int top;
     private int crescimento;
+    private int menor;
 
     public PilhaArray(int capacidade, int crescimento){
         this.capacidade = capacidade;
@@ -35,6 +38,12 @@ public class PilhaArray implements Pilha{
             arr = novo_arr;
         }
 
+        int elemento = (int)o;
+    
+        if (isEmpty() || menor > elemento){
+            menor = elemento;
+        }
+
         arr[++top] = o;
     }   
 
@@ -44,6 +53,16 @@ public class PilhaArray implements Pilha{
         }
 
         Object retira = arr[top--];
+
+        if (!isEmpty()){
+            menor = (int)arr[0]; //reserva temporaria no inicio
+            for (int i = 0; i <= top; i++){
+                if (menor > (int)arr[i]){
+                    menor = (int)arr[i];
+                }
+            }
+        }
+
         return retira;
     }
 
@@ -69,6 +88,14 @@ public class PilhaArray implements Pilha{
         }
 
         top = -1;
+    }
+
+    public Object acessarMenor() throws PilhaVaziaExcecao{
+        if (isEmpty()){
+            throw new PilhaVaziaExcecao("Pilha não contém elementos!");
+        }
+        
+        return menor;
     }
 
 }
