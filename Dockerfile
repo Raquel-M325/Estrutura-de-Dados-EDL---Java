@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac Pilha/*.java
+RUN javac Fila/Deque/*.java
 
-CMD ["java", "Pilha.TestePilhaAcessaMenor"]
+CMD ["java", "Fila.Deque.TesteDeque"]

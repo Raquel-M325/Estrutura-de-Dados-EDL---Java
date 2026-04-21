@@ -11,12 +11,14 @@ public class TesteDeque{
         System.out.println(check.first());
         System.out.println(check.last());
         System.out.println(check.size());
+        System.out.println(check.acessarMenor());
 
         check.removeFirst();
         
         System.out.println(check.first());
         System.out.println(check.last());
         System.out.println(check.size());
+        System.out.println(check.acessarMenor());
 
     }
 }

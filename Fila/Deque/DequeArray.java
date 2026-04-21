@@ -3,7 +3,7 @@ package Fila.Deque;
 public class DequeArray implements Deque {
     
     private Object[] arr;
-    private int capacidade, inicio, fim, size;
+    private int capacidade, inicio, fim, size, menor;
     
     public DequeArray(int capacidade){
         this.capacidade = capacidade;
@@ -15,12 +15,24 @@ public class DequeArray implements Deque {
     public void insertFirst(Object o){
         inicio = (inicio - 1 + capacidade) % capacidade;
         arr[inicio] = o; //coloca o valor novo
+
+        int elemento = (int)o;
+        if (isEmpty() || menor > elemento){
+            menor = elemento;
+        }
+
         size++;
     }
 
     public void insertLast(Object o){
         arr[fim] = o;
         fim = (fim + 1) % capacidade; //a ordem importa e precisa ficar circular para nao ficar negativo
+        
+        int elemento = (int)o;
+        if (size == 0 || menor > elemento){
+            menor = elemento;
+        }
+
         size++;
 
     }
@@ -32,7 +44,18 @@ public class DequeArray implements Deque {
 
         Object valor = arr[inicio];
         inicio = (inicio + 1) % capacidade;
+
         size--;
+
+        if (!isEmpty()){
+            menor = (int)arr[inicio];
+            for (int i = inicio; i != fim; i = (i + 1) % capacidade){
+                if (menor > (int)arr[i]){
+                    menor = (int)arr[i];
+                }
+            }
+        }
+
         return valor;
     }
 
@@ -44,6 +67,16 @@ public class DequeArray implements Deque {
         fim = (fim - 1 + capacidade) % capacidade;
         Object valor = arr[fim];
         size--;
+
+        if (!isEmpty()){
+            menor = (int)arr[inicio];
+            for (int i = inicio; i != fim; i = (i + 1) % capacidade){
+                if (menor > (int)arr[i]){
+                    menor = (int)arr[i];
+                }
+            }
+        }
+        
         return valor;
 
     }
@@ -71,5 +104,13 @@ public class DequeArray implements Deque {
 
     public int size(){
         return size;
+    }
+
+    public Object acessarMenor() throws DequeVazia{
+        if (isEmpty()) {
+            throw new DequeVazia("Deque está sem elementos");
+        }
+
+        return menor;
     }
 }

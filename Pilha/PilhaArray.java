@@ -1,7 +1,5 @@
 package Pilha;
 
-import Projeto_das_Pilhas.PilhaVaziaExcecaoRP;
-
 public class PilhaArray implements Pilha{
     
     private int capacidade;

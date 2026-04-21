@@ -69,3 +69,30 @@ Têm tempo de execução O(1), pois o array acessa qualquer posição diretament
 | `acessarMenor` | O(1) | retorna atributo direto |
 | `grow` | O(n) | copia todos os elementos para novo array |
 
+
+### Pilha com Array
+
+| Operação | Tempo | Motivo |
+|---|---|---|
+| `push` | O(1) | insere direto pelo índice `top` |
+| `pop` | O(n) | recalcula o menor percorrendo o array |
+| `top` | O(1) | acessa direto pelo índice `top` |
+| `isEmpty` | O(1) | compara `top` com -1 direto |
+| `size` | O(1) | retorna `top + 1` direto |
+| `empty` | O(1) | reseta `top` para -1 direto |
+| `acessarMenor` | O(1) | retorna atributo direto |
+
+
+### Deque com Array
+
+| Operação | Tempo | Motivo |
+|---|---|---|
+| `insertFirst` | O(1) | acessa direto pelo índice `inicio` |
+| `insertLast` | O(1) | acessa direto pelo índice `fim` |
+| `removeFirst` | O(n) | recalcula o menor percorrendo o array |
+| `removeLast` | O(n) | recalcula o menor percorrendo o array |
+| `first` | O(1) | acessa direto pelo índice `inicio` |
+| `last` | O(1) | acessa direto pelo índice `fim` |
+| `isEmpty` | O(1) | compara `size` direto |
+| `size` | O(1) | retorna atributo direto |
+| `acessarMenor` | O(1) | retorna atributo direto |

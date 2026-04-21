@@ -9,4 +9,5 @@ public interface Deque {
     Object last() throws DequeVazia;
     int size();
     boolean isEmpty();
+    Object acessarMenor() throws DequeVazia;
 }
