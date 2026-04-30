@@ -21,12 +21,12 @@ public class ListaArray implements Lista {
         return size == 0;
     }
 
-    public boolean isFirst(int i){
-
+    public boolean isFirst(int i){ //analisar
+        return arr[inicio];
     }
 
     public boolean isLast(int i){
-
+        return arr[fim];
     }
 
     public void insertFirst(Object o){
@@ -54,10 +54,11 @@ public class ListaArray implements Lista {
     }
 
     public Object first(){
-
+        return arr[inicio]; //analisar
     }
 
     public Object last(){
+        return arr[fim];
 
     }
 
