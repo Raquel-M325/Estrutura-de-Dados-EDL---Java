@@ -5,15 +5,16 @@ public interface Lista {
     boolean isLast(int i);
     Object first();
     Object last();
-    Object before(int i);
-    Object after(int i);
-    Object replaceElement(int i, Object o);
-    void swapElements(int i, int j);
+    Object before(int i) throws ListaVazia;
+    Object after(int i) throws ListaVazia;
+    Object replaceElement(int i, Object o) throws ListaVazia;
+    void swapElements(int i, int j) throws ListaVazia;
     void insertBefore(int i, Object o);
     void insertAfter(int i, Object o);
     void insertFirst(Object o);
     void insertLast(Object o);
-    Object remove(int i);
+    Object remove(int i) throws ListaVazia;
     int size();
     boolean isEmpty();
+    void grow();
 }
