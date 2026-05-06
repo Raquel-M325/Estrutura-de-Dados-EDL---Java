@@ -1,7 +1,9 @@
 FROM eclipse-temurin:17
 WORKDIR /app
 COPY . .
-RUN javac Implementação/Lista/Array/ListaVazia.java \
-          Implementação/Lista/Array/ListaArray.java \
-          Implementação/Lista/Array/TestesLista.java
-CMD ["java", "Implementação.Lista.Array.TestesLista"]
+RUN javac Implementação/Vetor/Duplamente/VetorVazia.java \
+          Implementação/Vetor/Duplamente/VetorDupla.java \
+          Implementação/Vetor/Duplamente/No.java \
+          Implementação/Vetor/Duplamente/Vetor.java \
+          Implementação/Vetor/Duplamente/TestesVetor.java
+CMD ["java", "Implementação.Vetor.Duplamente.TestesVetor"]
