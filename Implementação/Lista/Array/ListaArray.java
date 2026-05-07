@@ -112,11 +112,19 @@ public class ListaArray implements Lista {
 
     }
 
-    public Object first(){
+    public Object first() throws ListaVazia{
+         if (isEmpty()){
+            throw new ListaVazia("Lista Vazia!");
+        }
+
         return arr[inicio]; //retorna como object
     }
 
-    public Object last(){
+    public Object last()  throws ListaVazia{
+         if (isEmpty()){
+            throw new ListaVazia("Lista Vazia!");
+        }
+
         return arr[size() - 1];
 
     }

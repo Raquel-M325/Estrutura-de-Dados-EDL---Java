@@ -3,8 +3,8 @@ package Implementação.Lista.Array;
 public interface Lista {
     boolean isFirst(int i);
     boolean isLast(int i);
-    Object first();
-    Object last();
+    Object first() throws ListaVazia;
+    Object last() throws ListaVazia;
     Object before(int i) throws ListaVazia;
     Object after(int i) throws ListaVazia;
     Object replaceElement(int i, Object o) throws ListaVazia;
