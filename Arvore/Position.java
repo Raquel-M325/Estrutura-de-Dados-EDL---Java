@@ -1,3 +1,4 @@
+package Arvore;
 public interface Position{
     void replace(Object o);
     Object swapElement();
@@ -5,4 +6,6 @@ public interface Position{
     Object height();
     String preorderPrint();
     String posorderPrint();
+    int size();
+    boolean isEmpty();
 }
