@@ -7,7 +7,7 @@ public class ArvoreSimples implements Position{
         this.size = 0;
     }
 
-    public void replace(Object o) throws InvalidPositionExceptionArvore{
+    public void replace(No no, Object o) throws InvalidPositionExceptionArvore{
         if (isEmpty()){
             throw new InvalidPositionExceptionArvore("Erro: Não há nós para acessar");
         }
@@ -19,7 +19,7 @@ public class ArvoreSimples implements Position{
         }
     }
 
-    public Object depth() throws InvalidPositionExceptionArvore{
+    public Object depth(No no) throws InvalidPositionExceptionArvore{
         if (isEmpty()){
             throw new InvalidPositionExceptionArvore("Erro: Não há nós para acessar");
         }
