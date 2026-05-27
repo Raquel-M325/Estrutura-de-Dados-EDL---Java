@@ -65,6 +65,12 @@ public class ArvoreSimples implements Position{
             return 0; //estagio inicial
         }
         
+        int h = 0;
+        for (int i = 0; i < node.getChildren().size(); i++){
+            h = Math.max(h, height);
+        }
+
+        return 1 + h;
 
     }
 
