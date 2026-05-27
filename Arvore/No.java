@@ -15,7 +15,7 @@ public class No {
         return elementos;
     }
 
-    public No getParent(){
+    public No getParents(){
         return parents;
     }
 
