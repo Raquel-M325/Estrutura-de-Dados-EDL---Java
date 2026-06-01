@@ -1,13 +1,11 @@
 package Arvore;
 public class ArvoreSimples implements Position{
-    private int size, depth, height;
+    private int size;
     private No root;
 
     public ArvoreSimples(){
         this.size = 0;
         this.root = null;
-        this.depth = 0;
-        this.height = 0;
     }
 
     public void replace(No node, Object o) throws InvalidPositionExceptionArvore{
@@ -108,9 +106,9 @@ public class ArvoreSimples implements Position{
             return node.getElement().toString();
         }
 
-        resultado =
+        String resultado = Node.getElement().String();
         for (int i = 0; i < node.getParents().getChildren().size(); i++){
-
+            resultado = ", " + 
         }
 
         return 
@@ -151,5 +149,38 @@ public class ArvoreSimples implements Position{
         }
 
         return node.getChildren().size() == 0; //se for 0, não tem filhos, ou seja, é externo.
+    }
+
+    public void insert(Object o, No node) throws InvalidPositionExceptionArvore{
+        if (node == null){
+            throw new InvalidPositionExceptionArvore("Está vazia");
+        }
+
+        No novo = new No();
+        novo.setElement(o);
+        node.setChildren(novo);
+        size++;
+    }
+
+    public No remove(No node) throws InvalidPositionExceptionArvore{
+        if (isEmpty()){
+            throw new InvalidPositionExceptionArvore("Está vazia");
+        }
+
+        if (node == null){
+            throw new InvalidPositionExceptionArvore("Está vazia");
+        }
+
+        //tirar a duvida com professor
+        if (isExternal()){
+            Object salvo = node.getElement();
+            node.getElement().remove(node);
+            return node.getElement(salvo);
+        }
+
+        if (isInternal()){
+
+            //Talvez tenha que dizer o No proximo e anterior para que aquele seja removido
+        }
     }
 }
