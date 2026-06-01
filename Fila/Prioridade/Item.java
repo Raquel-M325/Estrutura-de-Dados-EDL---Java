@@ -1,23 +1,16 @@
 package Fila.Prioridade;
 
 public class Item {
-    private Object value, elemento;
+
+    private Object elemento;
     private int key;
 
-    public Item(Object value, Object elemento){
-        this.value = value;
-        this.key = 0;
+    public Item(int key, Object elemento){
+        this.key = key;
+        this.elemento = elemento;
     }
 
-    public Object getValue(){
-        return value;
-    }
-
-    public void setValue(Object value){
-        this.value = value;
-    }
-
-    public Object getKey(){
+    public int getKey(){
         return key;
     }
 
