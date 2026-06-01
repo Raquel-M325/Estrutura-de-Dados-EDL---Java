@@ -106,7 +106,7 @@ public class ArvoreSimples implements Position{
             return node.getElement().toString();
         }
 
-        String resultado = Node.getElement().String();
+        String resultado = node.getElement().String();
         for (int i = 0; i < node.getParents().getChildren().size(); i++){
             resultado = ", " + 
         }
@@ -158,11 +158,11 @@ public class ArvoreSimples implements Position{
 
         No novo = new No();
         novo.setElement(o);
-        node.setChildren(novo);
+        node.setChildren(novo); //preciso analisar melhor
         size++;
     }
 
-    public No remove(No node) throws InvalidPositionExceptionArvore{
+    public void remove(No node) throws InvalidPositionExceptionArvore{
         if (isEmpty()){
             throw new InvalidPositionExceptionArvore("Está vazia");
         }
@@ -171,16 +171,7 @@ public class ArvoreSimples implements Position{
             throw new InvalidPositionExceptionArvore("Está vazia");
         }
 
-        //tirar a duvida com professor
-        if (isExternal()){
-            Object salvo = node.getElement();
-            node.getElement().remove(node);
-            return node.getElement(salvo);
-        }
-
-        if (isInternal()){
-
-            //Talvez tenha que dizer o No proximo e anterior para que aquele seja removido
-        }
+        size--;
+        
     }
 }

@@ -11,6 +11,6 @@ public interface Position{
     boolean isRoot(No node) throws InvalidPositionExceptionArvore;
     boolean isExternal(No node) throws InvalidPositionExceptionArvore;
     boolean isInternal(No node) throws InvalidPositionExceptionArvore;
-    void insertChild(Object o, No node) throws InvalidPositionExceptionArvore;
-    No remove(No node) throws InvalidPositionExceptionArvore;
+    void insert(Object o, No node) throws InvalidPositionExceptionArvore; 
+    void remove(No node) throws InvalidPositionExceptionArvore;
 }

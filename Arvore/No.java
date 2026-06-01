@@ -31,7 +31,7 @@ public class No {
         this.parents = parents;
     }
 
-    public void setChildren(ArrayList<No> children){
-        this.children = children;
+    public void setChildren(No node){
+        children.add(node); //porque é uma lista que esta adicionando
     }
 }
