@@ -11,7 +11,7 @@ public class Heap implements Position{
 
     public void upHeap(){
         while (key > min()){
-
+            
         }
     }
 
@@ -24,7 +24,7 @@ public class Heap implements Position{
     }
 
     public void insert(int key, Object o) throws InvalidPositionExceptionHeap{
-        arr[] =
+        arr[] =  
         Object novo = new Object;
         novo.setElement(o);
 
@@ -36,12 +36,14 @@ public class Heap implements Position{
             throw new InvalidPositionExceptionHeap("Está vazia");
         }
 
-        if (min()){
-            //removera esse minimo
+        for (int i = 0; i < size(); i++){
+            if ([i] == min()){
+                o.setElement(size - 1); //substitui o elemento que quero "remover"
+                //removera esse minimo
+            }
         }
-       
+
         size--;
-        
     }
 
     public Object min() throws InvalidPositionExceptionHeap{
