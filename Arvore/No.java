@@ -5,8 +5,8 @@ public class No {
     private No parents;
     private ArrayList<No> children; //porque tem varios filhos, sendo uma lista de Nós
 
-    public No(Object elementos){
-        this.elementos = elementos;
+    public No(){
+        this.elementos = null;
         this.parents = null;
         this.children = new ArrayList<No>();
     }

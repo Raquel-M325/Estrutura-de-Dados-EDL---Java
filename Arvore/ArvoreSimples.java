@@ -1,4 +1,6 @@
 package Arvore;
+import java.util.ArrayList;
+
 public class ArvoreSimples implements Position{
     private int size;
     private No root;
@@ -31,6 +33,8 @@ public class ArvoreSimples implements Position{
 
         Object salvo = nodeA.getElement();
         nodeA.setElement(nodeB.getElement());
+        nodeB.setElement(salvo);
+
         return salvo;
     }
 
@@ -42,12 +46,12 @@ public class ArvoreSimples implements Position{
         if (node == null){
             throw new InvalidPositionExceptionArvore("Erro: Nó nulo");
         }
-        
-        if (isRoot(node)){
-            return 0; //estagio inicial
-        } 
 
-        return 1 + depth(node.getParents()); //apos de checar a raiz, irá se somar enquanto tiver filhos
+        if (isRoot(node)){
+            return 0;
+        }
+
+        return 1 + depth(node.getParents());
     }
 
     public int height(No node) throws InvalidPositionExceptionArvore{
@@ -60,16 +64,17 @@ public class ArvoreSimples implements Position{
         }
 
         if (isExternal(node)){
-            return 0; //estagio inicial, ele checa na raiz até chegar o final dos filhos, se for externo, ele zera 
+            return 0;
         }
 
         int maxHeight = 0;
-        for (int i = 0; i < node.getChildren().size(); i++){ 
-            int conta = height(node.getChildren().get(i)); //para ele andar em cada nó dos filhos antes de comparar, esse height fica chamando a recursividade, conferindo varias vezes; esse get serve para pegar a posicao, do qual tive que definir o i para ele andar em cada nó dos filhos
-            maxHeight = Math.max(conta, maxHeight); //compara o valor atual i com o maximo, e retorna o maior
+
+        for (int i = 0; i < node.getChildren().size(); i++){
+            int conta = height(node.getChildren().get(i));
+            maxHeight = Math.max(conta, maxHeight);
         }
 
-        return 1 + maxHeight; //soma 1 depois que viu quem é maior, ou seja, o mais profundo
+        return 1 + maxHeight;
     }
 
     public String preorderPrint(No node) throws InvalidPositionExceptionArvore{
@@ -81,15 +86,12 @@ public class ArvoreSimples implements Position{
             throw new InvalidPositionExceptionArvore("Erro: Nó nulo");
         }
 
-        if (isRoot(node)){
-            return node.getElement().toString();
+        String resultado = node.getElement().toString();
+
+        for (int i = 0; i < node.getChildren().size(); i++){
+            resultado += ", " + preorderPrint(node.getChildren().get(i));
         }
 
-        String resultado = node.getElement().toString(); //pega o elemento do nó atual e transforma em string
-        for (int i = 0; i < node.getChildren().size(); i++){
-            resultado += ", " + preorderPrint(node.getChildren().get(i)); //para cada filho que andar e pegar, vai colocar apos do no atual, sendo no proximo
-        }
-        
         return resultado;
     }
 
@@ -106,13 +108,15 @@ public class ArvoreSimples implements Position{
             return node.getElement().toString();
         }
 
-        String resultado = node.getElement().String();
-        for (int i = 0; i < node.getParents().getChildren().size(); i++){
-            resultado = ", " + 
+        String resultado = "";
+
+        for (int i = 0; i < node.getChildren().size(); i++){
+            resultado += posorderPrint(node.getChildren().get(i)) + ", ";
         }
 
-        return 
+        resultado += node.getElement().toString();
 
+        return resultado;
     }
 
     public int size(){
@@ -140,7 +144,11 @@ public class ArvoreSimples implements Position{
             throw new InvalidPositionExceptionArvore("Erro: Árvore vazia");
         }
 
-        return node.getChildren().size() > 0; //se for 0, não tem filhos, ou seja, é externo. ''
+        if (node.getChildren().size() > 0){
+            return true;
+        }
+
+        return false;
     }
 
     public boolean isExternal(No node) throws InvalidPositionExceptionArvore{
@@ -148,17 +156,33 @@ public class ArvoreSimples implements Position{
             throw new InvalidPositionExceptionArvore("Erro: Árvore vazia");
         }
 
-        return node.getChildren().size() == 0; //se for 0, não tem filhos, ou seja, é externo.
+        if (node.getChildren().size() == 0){
+            return true;
+        }
+
+        return false;
     }
 
     public void insert(Object o, No node) throws InvalidPositionExceptionArvore{
+
+        if (root == null){
+            No root = new No();
+            root.setElement(o);
+            this.root = root;
+            size++;
+            return;
+        }
+
         if (node == null){
-            throw new InvalidPositionExceptionArvore("Está vazia");
+            throw new InvalidPositionExceptionArvore("Nó nulo");
         }
 
         No novo = new No();
         novo.setElement(o);
-        node.setChildren(novo); //preciso analisar melhor
+
+        node.setChildren(novo);
+        novo.setParents(node);
+
         size++;
     }
 
@@ -171,7 +195,33 @@ public class ArvoreSimples implements Position{
             throw new InvalidPositionExceptionArvore("Está vazia");
         }
 
+        if (isInternal(node)){
+
+            No escolhido = node.getChildren().get(0);
+
+            ArrayList<No> filhos = new ArrayList<No>();
+
+            for (int i = 0; i < escolhido.getChildren().size(); i++){
+                filhos.add(escolhido.getChildren().get(i));
+            }
+
+            node.setElement(escolhido.getElement());
+            node.getChildren().remove(0);
+
+            for (int i = 0; i < filhos.size(); i++){
+                node.setChildren(filhos.get(i));
+                filhos.get(i).setParents(node);
+            }
+
+        } else {
+
+            if (isRoot(node)){
+                root = null;
+            } else {
+                node.getParents().getChildren().remove(node);
+            }
+        }
+
         size--;
-        
     }
 }
