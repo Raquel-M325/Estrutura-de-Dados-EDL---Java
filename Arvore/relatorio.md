@@ -1,3 +1,6 @@
+# ArvoreSimples.java
+
+```java
 package Arvore;
 
 import java.util.ArrayList;
@@ -69,6 +72,7 @@ public class ArvoreSimples implements Position{
         }
 
         int maxHeight = 0;
+
         for (int i = 0; i < node.getChildren().size(); i++){
             int conta = height(node.getChildren().get(i));
             maxHeight = Math.max(conta, maxHeight);
@@ -222,3 +226,4 @@ public class ArvoreSimples implements Position{
         size--;
     }
 }
+```
