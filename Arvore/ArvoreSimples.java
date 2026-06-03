@@ -224,4 +224,8 @@ public class ArvoreSimples implements Position{
 
         size--;
     }
+
+    public No getRoot(){
+        return root;
+    }
 }
