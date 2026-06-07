@@ -1,4 +1,4 @@
-package Fila.Prioridade;
+package Fila.Prioridade.Heap_Array;
 
 public interface Position {
     int size();

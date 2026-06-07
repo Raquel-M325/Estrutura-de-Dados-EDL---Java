@@ -1,4 +1,4 @@
-package Arvore;
+package Arvore.Arvore_generica;
 public interface Position{
     void replace(No node, Object o) throws InvalidPositionExceptionArvore;
     Object swapElement(No nodeA, No nodeB) throws InvalidPositionExceptionArvore;

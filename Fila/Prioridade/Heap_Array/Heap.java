@@ -1,4 +1,4 @@
-package Fila.Prioridade;
+package Fila.Prioridade.Heap_Array;
 
 public class Heap implements Position {
 

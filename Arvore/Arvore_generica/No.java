@@ -1,4 +1,4 @@
-package Arvore;
+package Arvore.Arvore_generica;
 import java.util.ArrayList;
 public class No {
     private Object elementos;
