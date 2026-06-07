@@ -5,8 +5,8 @@ public interface Position {
     void insert(No node, Object o);
     void removeMin() throws InvalidPositionExceptionBinaria;
     boolean isEmpty();
-    boolean isRoot(No root) throws InvalidPositionExceptionBinaria;
-    No getRoot(No root) throws InvalidPositionExceptionBinaria;
+    boolean isRoot() throws InvalidPositionExceptionBinaria;
+    No getRoot() throws InvalidPositionExceptionBinaria;
     void upheap(No node) throws InvalidPositionExceptionBinaria;
     void downheap(No node) throws InvalidPositionExceptionBinaria;
     void swap(No node1, No node2) throws InvalidPositionExceptionBinaria;
