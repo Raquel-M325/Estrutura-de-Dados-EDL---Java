@@ -10,4 +10,9 @@ public interface Position {
     No min() throws InvalidPositionExceptionHeapNo;
     void removeMin() throws InvalidPositionExceptionHeapNo;    
     No getRoot() throws InvalidPositionExceptionHeapNo;
+    No getLastNode() throws InvalidPositionExceptionHeapNo;
+    No getInsertionPosition() throws InvalidPositionExceptionHeapNo; //ve onde o próximo nó deve ser inserido
+    boolean hasLeft(No node) throws InvalidPositionExceptionHeapNo;
+    boolean hasRight(No node) throws InvalidPositionExceptionHeapNo;
+    boolean isRoot(No node) throws InvalidPositionExceptionHeapNo;
 }

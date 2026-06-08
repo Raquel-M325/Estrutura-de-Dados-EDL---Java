@@ -14,7 +14,8 @@ public class HeapNo implements Position{
         novo.setElement(elemento);
         novo.setKey(key);
 
-
+        size++;
+        upheap(novo);
     }
 
     public void swap(No node1, No node2) throws InvalidPositionExceptionHeapNo{
@@ -48,6 +49,9 @@ public class HeapNo implements Position{
         if (node == null){
             throw new InvalidPositionExceptionHeapNo("Nó nulo");
         }
+
+        
+
     }
 
     public void downheap(No node) throws InvalidPositionExceptionHeapNo{
@@ -58,6 +62,8 @@ public class HeapNo implements Position{
         if (node == null){
             throw new InvalidPositionExceptionHeapNo("Nó nulo");
         }
+
+
     }
 
     public No min() throws InvalidPositionExceptionHeapNo{
@@ -74,7 +80,13 @@ public class HeapNo implements Position{
             throw new InvalidPositionExceptionHeapNo("Heap vazia");
         }
 
-       
+        if (root == null){
+            throw new InvalidPositionExceptionHeapNo("Raiz nula");
+        }
+
+        
+
+        downheap(root);        
     }   
 
     public No getRoot() throws InvalidPositionExceptionHeapNo{
@@ -85,4 +97,35 @@ public class HeapNo implements Position{
         return root;
     }
 
+    public No getLastNode(){
+        
+    }
+
+    public No getInsertionPosition(){
+
+    }
+
+    public boolean hasLeft(No node){
+        if (node.getChildrenEsq() != null){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean hasRight(No node){
+        if (node.getChildrenDir() != null){
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isRoot(No node){
+        if (node == root){
+            return true;
+        }
+        
+        return false;
+    }
 }
