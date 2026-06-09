@@ -11,9 +11,13 @@ public class HeapNo implements Position{
 
     public void insert(int key, Object elemento){
         No novo = new No(elemento, key);
-        novo.setElement(elemento);
-        novo.setKey(key);
 
+        if (isEmpty()){
+            root = novo;
+        }
+        else{
+            
+        }
         size++;
         upheap(novo);
     }
@@ -50,7 +54,16 @@ public class HeapNo implements Position{
             throw new InvalidPositionExceptionHeapNo("Nó nulo");
         }
 
-        
+        while (!isRoot(node)){
+            if (node.getKey() < node.getParent().getKey()){
+                swap(node, node.getParent());
+                node.setKey(node.getParent().getKey());
+                node = node.getParent();
+            } //realizou a troca, enquanto for menor que pai até chegar na raiz
+            else{
+                break;
+            }
+        }
 
     }
 
@@ -62,6 +75,9 @@ public class HeapNo implements Position{
         if (node == null){
             throw new InvalidPositionExceptionHeapNo("Nó nulo");
         }
+
+        while (hasLeft(node)){
+            
 
 
     }
@@ -125,7 +141,7 @@ public class HeapNo implements Position{
         if (node == root){
             return true;
         }
-        
+
         return false;
     }
 }
