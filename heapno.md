@@ -1,3 +1,113 @@
+# Implementação de Fila de Prioridade com Heap (Nó)
+
+## Interface Position
+
+```java
+package Fila.Prioridade.Heap_No;
+
+public interface Position {
+
+    void insert(Object elemento, int key) throws InvalidPositionExceptionHeapNo;
+
+    void swap(No node1, No node2) throws InvalidPositionExceptionHeapNo;
+
+    int size();
+
+    boolean isEmpty();
+
+    void upheap(No node) throws InvalidPositionExceptionHeapNo;
+
+    void downheap(No node) throws InvalidPositionExceptionHeapNo;
+
+    No min() throws InvalidPositionExceptionHeapNo;
+
+    void removeMin() throws InvalidPositionExceptionHeapNo;
+
+    No getRoot() throws InvalidPositionExceptionHeapNo;
+
+    No getLastNode() throws InvalidPositionExceptionHeapNo;
+
+    No getInsertionPosition() throws InvalidPositionExceptionHeapNo;
+
+    boolean hasLeft(No node) throws InvalidPositionExceptionHeapNo;
+
+    boolean hasRight(No node) throws InvalidPositionExceptionHeapNo;
+
+    boolean isRoot(No node) throws InvalidPositionExceptionHeapNo;
+}
+
+
+```
+
+## Classe No
+
+```java
+
+package Fila.Prioridade.Heap_No;
+
+public class No {
+    private int key;
+    private No parent, childrenEsq, childrenDir;
+    private Object elemento;
+
+    public No(Object elemento, int key){
+        this.key = key;
+        this.parent = null;
+        this.childrenEsq = null;
+        this.childrenDir = null;
+        this.elemento = elemento;
+    }
+
+    public void setElement(Object elemento){
+        this.elemento = elemento;
+    }
+
+    public void setKey(int key){
+        this.key = key;
+    }
+
+    public void setParent(No parent){
+        this.parent = parent;
+    }
+
+    public void setChildrenEsq(No childrenEsq){
+        this.childrenEsq = childrenEsq;
+    }
+
+    public void setChildrenDir(No childrenDir){
+        this.childrenDir = childrenDir;
+    }
+
+    public Object getElement(){
+        return elemento;
+    }
+
+    public int getKey(){
+        return key;
+    }
+
+    public No getParent(){
+        return parent;
+    }
+
+    public No getChildrenEsq(){
+        return childrenEsq;
+    }
+
+    public No getChildrenDir(){
+        return childrenDir;
+    }
+}
+
+
+
+```
+
+
+
+## Classe HeapNo
+
+```java
 package Fila.Prioridade.Heap_No;
 
 public class HeapNo implements Position {
@@ -143,7 +253,6 @@ public class HeapNo implements Position {
         return root;
     }
 
-
     public No getLastNode() throws InvalidPositionExceptionHeapNo{
         if (isEmpty()){
             throw new InvalidPositionExceptionHeapNo("Heap vazia");
@@ -157,7 +266,7 @@ public class HeapNo implements Position {
 
     private void getLastNodeRec(No node){
         if (node == null){
-            return; //por já ter mensagem anterior no outro metodo
+            return;
         }
 
         ultimo = node;
@@ -166,7 +275,6 @@ public class HeapNo implements Position {
         getLastNodeRec(node.getChildrenDir());
     }
 
-  
     public No getInsertionPosition() throws InvalidPositionExceptionHeapNo{
         if (root == null){
             throw new InvalidPositionExceptionHeapNo("Raiz nula");
@@ -216,3 +324,18 @@ public class HeapNo implements Position {
         return node == root;
     }
 }
+
+```
+
+## Classe Exception
+
+```java
+package Fila.Prioridade.Heap_No;
+
+public class InvalidPositionExceptionHeapNo extends Exception {
+    public InvalidPositionExceptionHeapNo(String err){
+        super(err);
+    }
+}
+
+```
