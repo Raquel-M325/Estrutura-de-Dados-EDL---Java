@@ -2,16 +2,16 @@ package Arvore.Arvore_binaria;
 
 public class No {
     private No parent, childrenEsq, childrenDir;
-    private Object elemento;
+    private int elemento;
 
-    public No(Object elemento){
+    public No(int elemento){
         this.parent = null;
         this.childrenEsq = null;
         this.childrenDir = null;
         this.elemento = elemento;
     }
 
-    public void setElement(Object elemento){
+    public void setElement(int elemento){
         this.elemento = elemento;
     }
 
@@ -27,7 +27,7 @@ public class No {
         this.childrenDir = childrenDir;
     }
 
-    public Object getElement(){
+    public int getElement(){
         return elemento;
     }
 
