@@ -110,26 +110,19 @@ public class HashTable implements Position{
 
         while (arr[indice] != null){
 
-            //primeiro pego o item com novo indice calculado
-            //depois comparo se é igual para colar
-            //se colei, pego o proximo
-
-            while (arr[indice] != novo_arr[indice_novo]){
-                //isso é só pegando em comparando um elemento da lista velha
-
-                if (arr[indice] == novo_arr[indice_novo]){
-                    //se encontrei, colarei o item do indice na mesma posicao
-                    armazenado_novo = armazenado;
-                    break;
-
-                } else{ //senão, terei que andar até achar da nova lista
-                    indice_novo = (indice_novo + 1) % nova_capacidade;
-                    armazenado_novo = (Item) novo_arr[indice_novo];
-
-                }
+            if (arr[indice] == novo_arr[indice_novo]){
+                novo_arr[indice_novo] = arr[armazenado];
 
             } 
-           
+
+            if (arr[indice] != novo_arr[indice_novo]){ 
+                indice_novo = (indice_novo + 1) % nova_capacidade;
+                armazenado_novo = (Item) novo_arr[indice_novo];
+            }
+
+            if (arr[indice] == null){
+                break;
+            }
         }
 
         capacidade = nova_capacidade;
