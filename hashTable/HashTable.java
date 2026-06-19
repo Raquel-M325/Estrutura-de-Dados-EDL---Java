@@ -108,7 +108,7 @@ public class HashTable implements Position{
         Item armazenado = (Item) arr[indice];
         Item armazenado_novo = (Item) novo_arr[indice_novo];
 
-        while (arr[indice] != null){
+        while (arr[armazenado] != null){
 
             if (arr[indice] == novo_arr[indice_novo]){
                 novo_arr[indice_novo] = arr[armazenado];
@@ -122,6 +122,10 @@ public class HashTable implements Position{
 
             if (arr[indice] == null){
                 break;
+            }
+
+            if (arr[armazenado] == null){
+                
             }
         }
 
