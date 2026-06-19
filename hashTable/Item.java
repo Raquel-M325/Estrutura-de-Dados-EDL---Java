@@ -1,3 +1,5 @@
+package hashTable;
+
 public class Item{
     private Object elemento;
     private int key;
