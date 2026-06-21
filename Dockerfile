@@ -1,9 +1,9 @@
 FROM eclipse-temurin:17
 WORKDIR /app
 COPY . .
-RUN javac Arvore/InvalidPositionExceptionArvore.java \
-          Arvore/ArvoreSimples.java \
-          Arvore/No.java \
-          Arvore/Position.java \
-          Arvore/Test.java
-CMD ["java", "Arvore.Test"]
+RUN javac hashTable/InvalidHashTable.java \
+          hashTable/HashTable.java \
+          hashTable/Item.java \
+          hashTable/Position.java \
+          hashTable/Teste.java
+CMD ["java", "hashTable.Teste"]

@@ -37,16 +37,16 @@ public class HashTable implements Position{
 
         int indice = key % capacidade; //primeiro pego a chave e depois irei pegar o que está armazenado
 
-        Item armazenado = (Item) arr[indice]; //o que já existe da chave e elemento, acessando ela
-
         Object removido = null; 
 
         while (arr[indice] != null){ //enquanto tiver indice
+           
+           Item armazenado = (Item) arr[indice]; //o que já existe da chave e elemento, acessando ela
+           
             if (key != armazenado.getKey()){
                 indice = (indice + 1) % capacidade; //anda o indice!
-                armazenado = (Item) arr[indice]; //ele se atualiza com a mudança do indice!
             } else{
-                removido = armazenado.getKey(); //armazena
+                removido = armazenado.getElement(); //armazena
                 arr[indice] = null; //ele tira o item do indice armazenado
                 break;
             }
@@ -69,12 +69,12 @@ public class HashTable implements Position{
 
         int indice = key % capacidade; //lembre-se que a posicao sempre é int
 
-        Item armazenado = (Item) arr[indice];
-
         while (arr[indice] != null){
+                    
+            Item armazenado = (Item) arr[indice];
+            
             if (key != armazenado.getKey()){
                 indice = (indice + 1) % capacidade; //não esqueça do + 1 para poder andar, senao ficaria parado
-                armazenado =  (Item) arr[indice];
             } else {
                 achado = armazenado.getElement();
                 break;
@@ -96,36 +96,20 @@ public class HashTable implements Position{
         return size == 0;
     }
 
-    //PRECISO ANALISAR
-    public void grow(int key){
+    public void grow(){
         int nova_capacidade = capacidade * 2;
         Object[] novo_arr = new Object[nova_capacidade];
-        
-        //não só copia, precisa calcular os indices novamente para depois colocar a copia
-        int indice = key % capacidade;
-        int indice_novo = key % nova_capacidade;
-
-        Item armazenado = (Item) arr[indice];
-        Item armazenado_novo = (Item) novo_arr[indice_novo];
-
-        while (arr[armazenado] != null){
-
-            if (arr[indice] == novo_arr[indice_novo]){
-                novo_arr[indice_novo] = arr[armazenado];
-
-            } 
-
-            if (arr[indice] != novo_arr[indice_novo]){ 
-                indice_novo = (indice_novo + 1) % nova_capacidade;
-                armazenado_novo = (Item) novo_arr[indice_novo];
-            }
-
-            if (arr[indice] == null){
-                break;
-            }
-
-            if (arr[armazenado] == null){
+    
+        for (int i = 0; i < capacidade; i++){
+            if (arr[i] != null){
+                Item velho_armazenado = (Item) arr[i];
+                int novo_indice = velho_armazenado.getKey() % nova_capacidade;
                 
+                while (novo_arr[novo_indice] != null){
+                    novo_indice = (novo_indice + 1) % nova_capacidade;
+                }
+
+                novo_arr[novo_indice] = velho_armazenado;
             }
         }
 
