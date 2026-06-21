@@ -1,4 +1,4 @@
-package hashTable;
+package hashTable.linearProbing;
 
 public class HashTable implements Position{
     private Object[] arr;

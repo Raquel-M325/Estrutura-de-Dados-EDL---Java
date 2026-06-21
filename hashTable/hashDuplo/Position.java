@@ -1,4 +1,4 @@
-package hashTable;
+package hashTable.hashDuplo;
 
 public interface Position {
     void insert(Object elemento, int key);

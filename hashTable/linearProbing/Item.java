@@ -1,4 +1,4 @@
-package hashTable;
+package hashTable.linearProbing;
 
 public class Item{
     private Object elemento;
