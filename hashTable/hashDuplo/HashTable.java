@@ -3,26 +3,32 @@ package hashTable.hashDuplo;
 public class HashTable implements Position{
     private Object[] arr;
     private int capacidade, size;
+    private int q;
 
     public HashTable(int capacidade){
         this.capacidade = capacidade;
         this.size = 0;
         arr = new Object[capacidade];
+        this.q = 7; //escolhi fixo 
     }
 
     public void insert(Object elemento, int key) {
-        if (capacidade / 2 < size){
+        
+        double alfa = (double) size / capacidade; //diz o quanto encheu
+        
+        if (alfa > 0.5){
             grow();
         }
 
         Item novo_item = new Item(elemento, key); //esse é o novo elemento com chave / dicionario
 
         int indice_elemento = novo_item.getKey() % capacidade; //indice do elemento com chave, mas não é elemento, somente o INDICE
+        int pulo = q - (novo_item.getKey() % q);
 
-        while (arr[indice_elemento] != null ){
+ 
+        while (arr[indice_elemento] != null){
             //coloca o circular para ele andar
-            indice_elemento = (indice_elemento + 1) % capacidade;
-            
+            indice_elemento = (indice_elemento + pulo) % capacidade;
         }
 
         arr[indice_elemento] = novo_item;
@@ -36,6 +42,7 @@ public class HashTable implements Position{
         }
 
         int indice = key % capacidade; //primeiro pego a chave e depois irei pegar o que está armazenado
+        int pulo = q - (key % q);
 
         Object removido = null; 
 
@@ -44,7 +51,7 @@ public class HashTable implements Position{
            Item armazenado = (Item) arr[indice]; //o que já existe da chave e elemento, acessando ela
            
             if (key != armazenado.getKey()){
-                indice = (indice + 1) % capacidade; //anda o indice!
+                indice = (indice + pulo) % capacidade; //anda o indice!
             } else{
                 removido = armazenado.getElement(); //armazena
                 arr[indice] = null; //ele tira o item do indice armazenado
@@ -68,13 +75,14 @@ public class HashTable implements Position{
         Object achado = null;
 
         int indice = key % capacidade; //lembre-se que a posicao sempre é int
+        int pulo = q - (key % q);
 
         while (arr[indice] != null){
                     
             Item armazenado = (Item) arr[indice];
             
             if (key != armazenado.getKey()){
-                indice = (indice + 1) % capacidade; //não esqueça do + 1 para poder andar, senao ficaria parado
+                indice = (indice + pulo) % capacidade; //não esqueça do + 1 para poder andar, senao ficaria parado
             } else {
                 achado = armazenado.getElement();
                 break;
@@ -115,7 +123,6 @@ public class HashTable implements Position{
 
         capacidade = nova_capacidade;
         arr = novo_arr;
-
     }
 
     

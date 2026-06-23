@@ -11,10 +11,13 @@ public class HashTable implements Position{
     }
 
     public void insert(Object elemento, int key) {
-        if (capacidade / 2 < size){
+        
+        double alfa = (double) size / capacidade; //diz o quanto encheu
+        
+        if (alfa > 0.5){
             grow();
         }
-
+        
         Item novo_item = new Item(elemento, key); //esse é o novo elemento com chave / dicionario
 
         int indice_elemento = novo_item.getKey() % capacidade; //indice do elemento com chave, mas não é elemento, somente o INDICE
