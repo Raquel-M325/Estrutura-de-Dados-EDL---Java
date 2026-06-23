@@ -9,25 +9,24 @@ public class HashTable implements Position{
         this.capacidade = capacidade;
         this.size = 0;
         arr = new Object[capacidade];
-        this.q = 7; //escolhi fixo 
+        this.q = 7;  
     }
 
     public void insert(Object elemento, int key) {
         
-        double alfa = (double) size / capacidade; //diz o quanto encheu
+        double alfa = (double) size / capacidade; 
         
         if (alfa > 0.5){
             grow();
         }
 
-        Item novo_item = new Item(elemento, key); //esse é o novo elemento com chave / dicionario
+        Item novo_item = new Item(elemento, key); 
 
-        int indice_elemento = novo_item.getKey() % capacidade; //indice do elemento com chave, mas não é elemento, somente o INDICE
+        int indice_elemento = novo_item.getKey() % capacidade; 
         int pulo = q - (novo_item.getKey() % q);
 
  
         while (arr[indice_elemento] != null){
-            //coloca o circular para ele andar
             indice_elemento = (indice_elemento + pulo) % capacidade;
         }
 
@@ -41,20 +40,20 @@ public class HashTable implements Position{
             throw new InvalidHashTable("Nenhum item para remover, está vazio!");
         }
 
-        int indice = key % capacidade; //primeiro pego a chave e depois irei pegar o que está armazenado
+        int indice = key % capacidade; 
         int pulo = q - (key % q);
 
         Object removido = null; 
 
-        while (arr[indice] != null){ //enquanto tiver indice
+        while (arr[indice] != null){ 
            
-           Item armazenado = (Item) arr[indice]; //o que já existe da chave e elemento, acessando ela
+           Item armazenado = (Item) arr[indice]; 
            
             if (key != armazenado.getKey()){
-                indice = (indice + pulo) % capacidade; //anda o indice!
+                indice = (indice + pulo) % capacidade; 
             } else{
-                removido = armazenado.getElement(); //armazena
-                arr[indice] = null; //ele tira o item do indice armazenado
+                removido = armazenado.getElement(); 
+                arr[indice] = null; 
                 break;
             }
         }
@@ -74,7 +73,7 @@ public class HashTable implements Position{
 
         Object achado = null;
 
-        int indice = key % capacidade; //lembre-se que a posicao sempre é int
+        int indice = key % capacidade; 
         int pulo = q - (key % q);
 
         while (arr[indice] != null){
@@ -82,7 +81,7 @@ public class HashTable implements Position{
             Item armazenado = (Item) arr[indice];
             
             if (key != armazenado.getKey()){
-                indice = (indice + pulo) % capacidade; //não esqueça do + 1 para poder andar, senao ficaria parado
+                indice = (indice + pulo) % capacidade; 
             } else {
                 achado = armazenado.getElement();
                 break;
@@ -112,9 +111,10 @@ public class HashTable implements Position{
             if (arr[i] != null){
                 Item velho_armazenado = (Item) arr[i];
                 int novo_indice = velho_armazenado.getKey() % nova_capacidade;
+                int pulo = q - (velho_armazenado.getKey() % q);
                 
                 while (novo_arr[novo_indice] != null){
-                    novo_indice = (novo_indice + 1) % nova_capacidade;
+                    novo_indice = (novo_indice + pulo) % nova_capacidade;
                 }
 
                 novo_arr[novo_indice] = velho_armazenado;

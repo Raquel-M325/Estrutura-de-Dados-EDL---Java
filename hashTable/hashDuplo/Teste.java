@@ -3,42 +3,40 @@ package hashTable.hashDuplo;
 public class Teste {
     public static void main(String[] args) {
 
-        HashTable tabela = new HashTable(4);
+        HashTable ht = new HashTable(5);
 
         // INSERT
-        tabela.insert("A", 1);
-        tabela.insert("B", 2);
-        tabela.insert("C", 3);
-        tabela.insert("D", 4);
+        ht.insert("A", 1);
+        ht.insert("B", 2);
+        ht.insert("C", 3);
+        ht.insert("D", 4);
+        ht.insert("E", 5);
 
-        // isso deve forçar grow()
-        tabela.insert("E", 5);
-
-        System.out.println("Tamanho: " + tabela.size());
+        System.out.println("Size após insert: " + ht.size());
 
         // FIND
         try {
-            System.out.println("Find 3: " + tabela.find(3)); // C
-            System.out.println("Find 5: " + tabela.find(5)); // E
+            System.out.println("Find 3: " + ht.find(3));
+            System.out.println("Find 5: " + ht.find(5));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         // REMOVE
         try {
-            System.out.println("Remove 2: " + tabela.remove(2)); // B
-            System.out.println("Remove 1: " + tabela.remove(1)); // A
+            System.out.println("Remove 2: " + ht.remove(2));
+            System.out.println("Remove 1: " + ht.remove(1));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        // TESTE APÓS REMOÇÃO
+        // TESTE DE BUSCA APÓS REMOÇÃO
         try {
-            System.out.println("Find 2: " + tabela.find(2)); // deve lançar exceção
+            System.out.println("Find 2: " + ht.find(2));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("Final size: " + tabela.size());
+        System.out.println("Final size: " + ht.size());
     }
 }

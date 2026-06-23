@@ -1,9 +1,9 @@
 FROM eclipse-temurin:17
 WORKDIR /app
 COPY . .
-RUN javac hashTable/InvalidHashTable.java \
-          hashTable/HashTable.java \
-          hashTable/Item.java \
-          hashTable/Position.java \
-          hashTable/Teste.java
-CMD ["java", "hashTable.Teste"]
+RUN javac hashTable/hashDuplo/InvalidHashTable.java \
+          hashTable/hashDuplo/HashTable.java \
+          hashTable/hashDuplo/Item.java \
+          hashTable/hashDuplo/Position.java \
+          hashTable/hashDuplo/Teste.java
+CMD ["java", "hashTable.hashDuplo.Teste"]
